@@ -1,0 +1,17 @@
+{
+  "name": "coltube-backend",
+  "version": "0.0.1",
+  "description": "A youtube clone",
+  "main": "server.js",
+  "type":"module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "colTheDeveloper",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.1",
+    "nodemon": "^3.0.1"
+  }
+}
