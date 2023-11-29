@@ -1,5 +1,5 @@
 import express from "express"
-import { deleteUser, getUser, likeVideo, subscribe, unlikeVideo, unsubscribe, updateUser } from "../controllers/userController.js"
+import { deleteUser, dislikeVideo, getUser, likeVideo, subscribe, unsubscribe, updateUser } from "../controllers/userController.js"
 import { verifyToken } from "../middlewares/verifyToken.js"
 
 const router=express.Router()
@@ -20,9 +20,9 @@ router.put("/sub/:id",verifyToken,subscribe)
 router.put("/unsub/:id",verifyToken,unsubscribe)
 
 //LIKE A VIDEO
-router.put("/like/:videoId",likeVideo)
+router.put("/like/:videoId",verifyToken,likeVideo)
 
 //DISLIKE A VIDEO
-router.put("/dislike/:videoId",unlikeVideo)
+router.put("/dislike/:videoId",verifyToken,dislikeVideo)
 
 export default router

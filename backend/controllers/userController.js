@@ -1,5 +1,6 @@
 import { createError } from "../middlewares/error.js"
 import userModel from "../models/userModel.js"
+import videoModel from "../models/videoModel.js"
 
 export const getUser=async(req,res,next)=>{
     try {
@@ -86,17 +87,30 @@ export const unsubscribe=async(req,res,next)=>{
 
 
 export const likeVideo=async(req,res,next)=>{
+    const userId=req.user.id
+    const videoId=req.params.videoId
     try {
-        
-    } catch (error) {
-        
+        await videoModel.findByIdAndUpdate(videoId,{
+            $addToSet:{likes:userId},
+            $pull:{dislikes:userId}
+        },{new:true})
+        res.status(200).json("The video has been liked!")
+    } catch (err) {
+        next(err)
     }
 }
 
-export const unlikeVideo=async(req,res,next)=>{
+export const dislikeVideo=async(req,res,next)=>{
+    const userId=req.user.id
+    const videoId=req.params.videoId
     try {
+        await videoModel.findByIdAndUpdate(videoId,{
+            $addToSet:{dislikes:userId},
+            $pull:{likes:userId}
+        },{new:true})
+        res.status(200).json('The video has beed disliked!')
         
-    } catch (error) {
-        
+    } catch (err) {
+        next(err)
     }
 }
