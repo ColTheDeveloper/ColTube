@@ -1,5 +1,6 @@
 import express from "express"
 import mongoose from "mongoose"
+import cors from "cors"
 import dotenv from "dotenv"
 import userRoutes from "./routes/userRoute.js"
 import commentRoutes from "./routes/commentRoute.js"
@@ -26,6 +27,11 @@ mongoose.connect(MONGODB_URI)
 
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors({
+    origin:["*","http://localhost:5173"],
+    method:["GET","POST","PUT"],
+    credentials:true
+}))
 app.use("/api/auth",authRoutes )
 app.use("/api/users",userRoutes )
 app.use("/api/comments",commentRoutes )

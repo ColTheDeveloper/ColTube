@@ -1,0 +1,33 @@
+.Auth{
+    /* border: 1px solid red; */
+    width: 100%;
+    margin-top: 4rem;
+    margin-left: 14rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80svh;
+}
+.Auth-form-container{
+    max-width: 25rem;
+    width: 90%;
+    border: 1px solid var(--background-secondary-color);
+    border-radius: 5px;
+}
+.Auth-form-container>h1{
+    text-align: center;
+}
+.Auth-form-container>form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+    padding: 10px 20px ;
+}
+.Auth-form-container>form>input{
+    width: 100%;
+}
+.Auth-btn{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,19 @@
+.Nav{
+    height: 100svh;
+    position: fixed;
+    top: 0%;
+    /* border: 1px solid green; */
+    width: 14rem;
+    transition: 500ms all;
+}
+.nav-container{
+    padding: 5px;
+}
+
+@media (max-width:800px) {
+    .Nav{
+        position: absolute;
+        left: -800px;  
+    }
+    
+}

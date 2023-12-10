@@ -43,3 +43,29 @@ export const signin=async(req,res,next)=>{
         next(err)
     }
 }
+
+export const signinWithGoogle= async(req,res,next)=>{
+    try {
+        const user= await userModel.findOne({name:req.body.name})
+        
+        if(user){
+            const  token=jwt.sign({id:user._id},process.env.JWT_TOKEN)
+            res.cookie("access_token",token,{
+                httpOnly:true
+            }).status(200).json(user)
+        }else{
+            const newUser= await userModel({
+                ...req.body,
+                fromGoogle:true
+            })
+            const user= await newUser.save()
+            const  token=jwt.sign({id:user._id},process.env.JWT_TOKEN)
+            res.cookie("access_token",token,{
+                httpOnly:true
+            }).status(200).json(user)
+        }
+    } catch (err) {
+        next(err)   
+    }
+
+}

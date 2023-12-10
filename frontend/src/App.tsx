@@ -12,7 +12,15 @@ const router=createBrowserRouter([
     children:[
       {
         path:"/",
-        element:<Home />
+        element:<Home type='random' />
+      },
+      {
+        path:"/explore",
+        element:<Home type='trend' />
+      },
+      {
+        path:"/subscription",
+        element:<Home type='sub' />
       },
       {
         path:"/auth",

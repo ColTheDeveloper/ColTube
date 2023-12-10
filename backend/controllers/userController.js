@@ -5,7 +5,7 @@ import videoModel from "../models/videoModel.js"
 export const getUser=async(req,res,next)=>{
     try {
         const user= await userModel.findById(req.params.id)
-
+        console.log(user)
         const {password, ...others}=user._doc
 
         res.status(200).json(others)
