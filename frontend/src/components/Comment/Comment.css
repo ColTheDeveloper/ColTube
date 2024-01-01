@@ -1,0 +1,32 @@
+.Comment{
+
+}
+.Comment-input-container{
+    display: flex;
+    
+}
+.Comment-input-container>div>img{
+    border-radius: 50rem;
+}
+.Comment-input-container>div:nth-of-type(2){
+    width: 100%;
+    display: flex;
+    
+}
+.Comment-input-container>div>input{
+    width: 100%;
+    margin-left: 1rem;
+    background-color: transparent;
+    outline: none;
+    border:  0;
+    border-bottom: 1px solid var(--background-secondary-color);
+}
+.Comment-btn-container{
+    margin-top: .5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+.Comment-btn-container>button:nth-of-type(1){
+    background-color: transparent;
+}

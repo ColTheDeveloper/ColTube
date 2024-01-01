@@ -22,6 +22,9 @@ router.get("/random",randomVideos)
 //SEARCH FOR VIDEO WITH NAME
 router.get("/search", searchForVideo)
 
+//GET SUBSCRIBED CHANNEL VIDEO
+router.get("/sub",verifyToken, subscribedChannelVideos)
+
 //GET VIDEO
 router.get("/:id",getVideo)
 
@@ -29,8 +32,6 @@ router.get("/:id",getVideo)
 router.put("/views/:id",addViews)
 
 
-//GET SUBSCRIBED CHANNEL VIDEO
-router.get("/sub",verifyToken, subscribedChannelVideos)
 
 //GET VIDEO WITH TAGS
 router.get("/tags", getVideosWithTags)

@@ -1,16 +1,20 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./Auth.css"
 import axios from "axios"
 import { loginFailure, loginStart, loginSuccess } from "../../redux/userSlice"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { auth, provider } from "../../firebase"
 import { signInWithPopup } from "firebase/auth"
+import { RootState } from "../../redux/store"
+import { useNavigate } from "react-router-dom"
 
 const Auth=()=>{
     const dispatch=useDispatch()
+    const {user}=useSelector((state:RootState)=>state.user)
+    const navigate= useNavigate()
     const [isSigninForm,setIsSigninForm]=useState(true)
     const [signinData,setSigninData]=useState({
-        name:"",
+        email:"",
         password:""
     })
     const [signupData,setSignupData]=useState({
@@ -18,6 +22,10 @@ const Auth=()=>{
         email:"",
         password:""
     })
+
+    useEffect(()=>{
+        if(user) navigate("/")
+    },[navigate,user])
 
     const handleSignupChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
         setSignupData({...signupData,[e.target.name]:e.target.value})
@@ -31,7 +39,7 @@ const Auth=()=>{
         e.preventDefault()
         try {
             dispatch(loginStart())
-            const response= await axios.post("http://localhost:2500/api/auth/signin",signinData)
+            const response= await axios.post("http://localhost:2500/api/auth/signin",signinData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
             console.log(response.data)
         } catch (error) {
@@ -46,7 +54,7 @@ const Auth=()=>{
                 name:result.user.displayName,
                 email:result.user.email,
                 img:result.user.photoURL
-            }).then((res)=>{
+            },{withCredentials:true}).then((res)=>{
                 dispatch(loginSuccess(res.data))
             }).catch((err)=>{
                 console.log(err)
@@ -58,7 +66,7 @@ const Auth=()=>{
         e.preventDefault()
         try {
             dispatch(loginStart())
-            const response= await axios.post("http://localhost:2500/api/auth/signup",signupData)
+            const response= await axios.post("http://localhost:2500/api/auth/signup",signupData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
             console.log(response.data)
         } catch (error) {
@@ -77,8 +85,8 @@ const Auth=()=>{
                         <input 
                             type="text" 
                             placeholder="name" 
-                            name="name" 
-                            value={signinData.name} 
+                            name="email" 
+                            value={signinData.email} 
                             onChange={(e)=>handleSigninChange(e)} 
                             className="input"
                         />

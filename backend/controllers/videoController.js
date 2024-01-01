@@ -25,6 +25,7 @@ export const trendVideos=async(req,res,next)=>{
 
 export const getVideosWithTags=async(req,res,next)=>{
     const tags= req.query.tags.split(",")
+    console.log(tags)
     try {
         const videos= await videoModel.find({tags: {$in:tags}}).limit(20)
         res.status(200).json(videos)
@@ -61,13 +62,14 @@ export const subscribedChannelVideos=async(req,res,next)=>{
     try {
         const user=await userModel.findById(req.user.id)
         const subscribedChannel=user.subscribedUsers
-
-        const lists= Promise.all(
+        
+        const list= await Promise.all(
             subscribedChannel.map((channelId)=>{
                 return videoModel.find({userId: channelId})
             })
         )
-        res.status(200).json(lists.flat().sort((a,b)=>b.createdAt-a.createdAt))
+        
+        res.status(200).json(list.flat().sort((a,b)=>b.createdAt-a.createdAt))
     } catch (err) {
         next(err)
     }

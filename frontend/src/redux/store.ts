@@ -13,6 +13,7 @@ import {
   } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import videoReducer from './videoSlice'
+import  navbarReducer  from './navbarSlide'
 
 
 const persistConfig = {
@@ -23,7 +24,8 @@ const persistConfig = {
 
 const rootReducer=combineReducers({
   user:userReducer,
-  video:videoReducer
+  video:videoReducer,
+  navbar:navbarReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

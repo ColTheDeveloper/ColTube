@@ -1,19 +1,31 @@
 .Nav{
     height: 100svh;
-    position: fixed;
-    top: 0%;
-    /* border: 1px solid green; */
-    width: 14rem;
+    width: 18rem;
     transition: 500ms all;
+    overflow-y: auto;
 }
 .nav-container{
     padding: 5px;
 }
 
+.nav-dummy-btn{
+    display: flex;
+    align-items: center;
+}
+.nav-dummy-btn>svg{
+    width: 40px;
+}
+.nav-dummy-btn>span{
+    
+}
 @media (max-width:800px) {
     .Nav{
+        background-color: #070707;
         position: absolute;
-        left: -800px;  
+        left: -800px;
+        width: 14rem;  
+        z-index: 3;
+        height: 100svh;
     }
     
 }

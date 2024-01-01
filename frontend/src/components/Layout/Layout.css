@@ -1,26 +1,25 @@
 .Layout{
     position: relative;
-    overflow-y: hidden;
 }
 .Layout>div{
+    overflow-y: hidden;
     display: flex;
+    /* height: 100svh; */
 }
-.Layout-nav-container{
+/* .Layout-nav-container{
     width: 20rem;
     height: 100%;
     border: 1px solid red; 
     
-    /* height: 100svh;
+    height: 100svh;
     position: absolute;
-    top: 0%; */
-}
-.Layout-body-container{
-    width: 100%;
-}
+    top: 0%; 
+} */
+
 
 @media (max-width:800px) {
     .Layout-nav-container{
         display: none; 
     }
     
-}
+} 

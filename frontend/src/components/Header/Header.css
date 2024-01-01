@@ -14,12 +14,16 @@
 .ri-menu-line{
     font-size: 20px;
     padding: 10px;
+    cursor: pointer;
 }
-.Header-logo>div{
+.Header-logo>a{
+    display: flex;
+}
+.Header-logo>a>div{
     display: flex;
     align-items: center;
 }
-.Header-logo>h1{
+.Header-logo>a>h1{
     font-size: 20px;
     height: fit-content;
 }
@@ -168,9 +172,12 @@
     background-color: transparent;
     padding: 10px;
 }
+.uploaded-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 @media (max-width:600px) {
-    
-    
     
 }

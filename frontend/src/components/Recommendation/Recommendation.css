@@ -1,0 +1,11 @@
+.Recommendation{
+    width: 30%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+@media (max-width:800px) {
+    .Recommendation{
+        width: 100%;
+    }
+}
