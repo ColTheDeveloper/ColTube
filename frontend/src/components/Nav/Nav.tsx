@@ -5,11 +5,16 @@ import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { closeNavbar } from "../../redux/navbarSlide"
 import { RootState } from "../../redux/store"
-// import { RootState } from "@reduxjs/toolkit/query"
+import { logout } from "../../redux/userSlice"
 
 const Nav=()=>{
     const dispatch=useDispatch()
     const {isNavbarOpen}=useSelector((state:RootState)=>state.navbar)
+    const {user}=useSelector((state:RootState)=>state.user)
+    
+    const logOut=()=>{
+        dispatch(logout())
+    }
     return(
         <div style={{left:isNavbarOpen?"0px":"-800px"}} className="Nav">
             <div className="Header-logo">
@@ -26,10 +31,10 @@ const Nav=()=>{
                 <NavBtn iconName="ri-compass-line" navName="Explore" link="/explore" />
                 <NavBtn iconName="bi bi-collection-play" navName="Subscriptions" link="/sub" />
                 
-                <hr />
+                {/* <hr />
 
                 <NavBtn iconName="ri-home-2-fill" navName="Library" link="/library" />
-                <NavBtn iconName="ri-history-line" navName="History" link="/history" />
+                <NavBtn iconName="ri-history-line" navName="History" link="/history" /> */}
 
                 <hr />
                 <h3>Explore</h3>
@@ -91,12 +96,15 @@ const Nav=()=>{
                     </svg>
                     <span>ColTube Kids</span>
                 </div>
-                <hr />
-                <div onClick={()=>{}}>
-                    <i className="ri-logout-circle-line"></i>
-                    <span>LogOut</span>
-
-                </div>
+                {user&&
+                    <>
+                        <hr />
+                        <div onClick={()=>{logOut()}} className="nav-dummy-btn">
+                            <i className="ri-logout-circle-line"></i>
+                            <span>LogOut</span>
+                        </div>
+                    </>
+                }
             </div>
 
         </div>

@@ -11,12 +11,22 @@
 .nav-dummy-btn{
     display: flex;
     align-items: center;
+    padding:10px 7px;
+    cursor: pointer;
+    border-radius: 10px;
 }
-.nav-dummy-btn>svg{
-    width: 40px;
+.nav-dummy-btn:hover{
+    background-color: var(--background-secondary-color);
+
+}
+.nav-dummy-btn>svg, .nav-dummy-btn>i{
+    width: 20px;
 }
 .nav-dummy-btn>span{
-    
+    /* margin-bottom: 5px;
+    margin-top: 5px; */
+    margin-left: 5px;
+
 }
 @media (max-width:800px) {
     .Nav{

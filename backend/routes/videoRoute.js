@@ -1,5 +1,5 @@
 import express from "express"
-import { addVideo, addViews, deleteVideo, getVideo, getVideosWithTags, randomVideos, searchForVideo, subscribedChannelVideos, trendVideos, updateVideo } from "../controllers/videoController.js"
+import { addVideo, addViews, deleteVideo, getChannelVideos, getVideo, getVideosWithTags, randomVideos, searchForVideo, subscribedChannelVideos, trendVideos, updateVideo } from "../controllers/videoController.js"
 import { verifyToken } from "../middlewares/verifyToken.js"
 
 const router=express.Router()
@@ -27,6 +27,9 @@ router.get("/sub",verifyToken, subscribedChannelVideos)
 
 //GET VIDEO
 router.get("/:id",getVideo)
+
+//GET CHANNEL VIDEO
+router.get("/channel/:id",getChannelVideos)
 
 //UPDATE VIEWS
 router.put("/views/:id",addViews)

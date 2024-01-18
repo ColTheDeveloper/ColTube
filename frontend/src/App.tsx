@@ -28,6 +28,10 @@ const router=createBrowserRouter([
         element:<Home type='sub' />
       },
       {
+        path:"/trend",
+        element:<Home type='trend' />
+      },
+      {
         path:"/auth",
         element:<Auth />
       },

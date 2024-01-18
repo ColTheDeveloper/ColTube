@@ -12,6 +12,15 @@ export const getVideo=async(req,res,next)=>{
     }
 }
 
+export const getChannelVideos=async(req,res,next)=>{
+    try {
+        const foundVideo= await videoModel.find({userId:req.params.id})
+        res.status(200).json(foundVideo)
+    } catch (err) {
+        next(err)
+    }
+}
+
 
 export const trendVideos=async(req,res,next)=>{
     try {

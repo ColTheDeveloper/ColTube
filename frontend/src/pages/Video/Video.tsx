@@ -88,27 +88,35 @@ const Video=()=>{
                                     <p>{channelData?.subscribers} subscribers</p>    
                                 </div>
                                 <div>
-                                    <button onClick={()=>handleSubscription()}>
-                                        {user?.subscribedUsers.includes(channelData?._id as string)?
-                                            "Subscribed" 
-                                            :
-                                            "Subscribe" 
-                                        }
+                                    {user?
+                                        <button onClick={()=>handleSubscription()}>
+                                            {user?.subscribedUsers.includes(channelData?._id as string)?
+                                                "Subscribed" 
+                                                :
+                                                "Subscribe" 
+                                            }
 
-                                    </button>
+                                        </button>
+                                        :
+                                        ""
+                                    }
                                 </div>
                             </div>
                             <div className="video-like-share">
-                                <div>
-                                    <div onClick={()=>handleLikes()} className="video-share-btn">
-                                        <i className="ri-thumb-up-line"></i>
-                                        <p>{currentVideo?.likes.length}</p>
+                                {user?
+                                    <div>
+                                        <div onClick={()=>handleLikes()} className="video-share-btn">
+                                            <i className="ri-thumb-up-line"></i>
+                                            <p>{currentVideo?.likes.length}</p>
+                                        </div>
+                                        <div onClick={()=>handleDislikes()} className="video-share-btn">
+                                            <i className="ri-thumb-down-line"></i>
+                                            <p>{currentVideo?.dislikes.length}</p>
+                                        </div>
                                     </div>
-                                    <div onClick={()=>handleDislikes()} className="video-share-btn">
-                                        <i className="ri-thumb-down-line"></i>
-                                        <p>{currentVideo?.dislikes.length}</p>
-                                    </div>
-                                </div>
+                                :
+                                    ""
+                                }
                                 <div className="video-share-btn">
                                     <i className="ri-share-forward-line"></i>
                                     <p>share</p>
