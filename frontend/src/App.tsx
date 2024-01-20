@@ -10,6 +10,7 @@ import { useCookies } from 'react-cookie'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { logout } from './redux/userSlice'
+import Tag from './pages/Tag/Tag'
 
 const router=createBrowserRouter([
   {
@@ -34,6 +35,22 @@ const router=createBrowserRouter([
       {
         path:"/auth",
         element:<Auth />
+      },
+      {
+        path:"/tags?tag=coding",
+        element:<Tag tag='coding' />
+      },
+      {
+        path:"/tags?tag=sport",
+        element:<Tag tag='sport' />
+      },
+      {
+        path:"/tags?tag=gaming",
+        element:<Tag tag='gaming' />
+      },
+      {
+        path:"/tags?tag=music",
+        element:<Tag tag='music' />
       },
       {
         path:"/video/:videoId",

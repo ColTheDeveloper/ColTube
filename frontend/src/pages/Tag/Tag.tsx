@@ -1,6 +1,5 @@
 import axios from "axios";
 import Card from "../../components/Card/Card";
-import "./Home.css"
 import { useEffect, useState } from "react";
 import { useDispatch} from "react-redux";
 import { closeNavbar } from "../../redux/navbarSlide";
