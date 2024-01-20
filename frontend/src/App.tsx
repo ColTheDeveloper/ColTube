@@ -37,20 +37,8 @@ const router=createBrowserRouter([
         element:<Auth />
       },
       {
-        path:"/tags?tag=coding",
-        element:<Tag tag='coding' />
-      },
-      {
-        path:"/tags?tag=sport",
-        element:<Tag tag='sport' />
-      },
-      {
-        path:"/tags?tag=gaming",
-        element:<Tag tag='gaming' />
-      },
-      {
-        path:"/tags?tag=music",
-        element:<Tag tag='music' />
+        path:"/tags",
+        element:<Tag />
       },
       {
         path:"/video/:videoId",

@@ -5,15 +5,21 @@ import { useDispatch} from "react-redux";
 import { closeNavbar } from "../../redux/navbarSlide";
 import Spinner from "../../components/Spinner/Spinner"
 import { videoType } from "../../types/pagePropsTypes";
+import { useSearchParams } from "react-router-dom";
 
-type VideoPropType={
-    tag:string
-}
+// type VideoPropType={
+//     tag:string
+// }
 
-const Tag=({tag}:VideoPropType)=>{
+const Tag=()=>{
     const [videos,setVideos]=useState<videoType[] | null>(null)
     const [isLoading,setIsLoading]=useState(false)
+    const [tagParams]=useSearchParams()
     const dispatch=useDispatch()
+
+    const tag=tagParams.get("tag")
+
+    console.log(tag)
 
     
     useEffect(()=>{

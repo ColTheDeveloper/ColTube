@@ -27,9 +27,9 @@ const Nav=()=>{
                 </Link>
             </div>
             <div className="nav-container">
-                <NavBtn iconName="ri-home-2-fill" navName="Home" link="/" />
-                <NavBtn iconName="ri-compass-line" navName="Explore" link="/explore" />
-                <NavBtn iconName="bi bi-collection-play" navName="Subscriptions" link="/sub" />
+                <NavBtn iconName="ri-home-2-fill" navName="Home" isNavLink={true} link="/" />
+                <NavBtn iconName="ri-compass-line" navName="Explore" isNavLink={true} link="/explore" />
+                <NavBtn iconName="bi bi-collection-play" navName="Subscriptions" isNavLink={true} link="/sub" />
                 
                 {/* <hr />
 
@@ -38,11 +38,11 @@ const Nav=()=>{
 
                 <hr />
                 <h3>Explore</h3>
-                <NavBtn iconName="ri-fire-line" navName="Trending" link="/trend" />
-                <NavBtn iconName="ri-code-line" navName="Coding" link="/code" />
-                <NavBtn iconName="ri-music-2-line" navName="Music" link="/music" />
-                <NavBtn iconName="ri-trophy-line" navName="Sport" link="/sport" />
-                <NavBtn iconName="ri-gamepad-line" navName="Gaming" link="/gaming" />
+                <NavBtn iconName="ri-fire-line" navName="Trending" isNavLink={false} link="/trend" />
+                <NavBtn iconName="ri-code-line" navName="Coding" isNavLink={false} link="/tags?tag=coding" />
+                <NavBtn iconName="ri-music-2-line" navName="Music" isNavLink={false} link="/tags?tag=music" />
+                <NavBtn iconName="ri-trophy-line" navName="Sport" isNavLink={false} link="/tags?tag=sport" />
+                <NavBtn iconName="ri-gamepad-line" navName="Gaming" isNavLink={false} link="/tags?tag=gaming" />
 
                 <hr />
                 <h3>More from ColTube</h3>
