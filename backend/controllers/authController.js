@@ -26,9 +26,14 @@ export const signup=async(req,res,next)=>{
 export const signin=async(req,res,next)=>{
     try {
         const user= await userModel.findOne({email:req.body.email})
-        if(!user) return next(createError(404,"User doesn't exist"))
+        if(!user) return next(createError(404,"User doesn't exist!"))
+
+        if(user.fromGoogle) return next(createError(404,"signin with google instead!"))
+
+        console.log(user)
 
         const isPassword= bcrypt.compare(req.body.password,user.password)
+        console.log(isPassword)
         if(!isPassword) return next(createError(400,"Incorrect Password!"))
 
         const  token=jwt.sign({id:user._id},process.env.JWT_TOKEN)

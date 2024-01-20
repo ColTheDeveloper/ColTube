@@ -31,3 +31,9 @@
     display: flex;
     justify-content: center;
 }
+
+.err-msg{
+    color: rgb(201, 3, 3);
+    font-size: 12px;
+    display: flex;
+}

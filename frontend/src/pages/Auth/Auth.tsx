@@ -13,6 +13,8 @@ const Auth=()=>{
     const {user}=useSelector((state:RootState)=>state.user)
     const navigate= useNavigate()
     const [isSigninForm,setIsSigninForm]=useState(true)
+    const [error,setError]=useState(false)
+    const [errMsg,setErrMsg]=useState("")
     const [signinData,setSigninData]=useState({
         email:"",
         password:""
@@ -42,8 +44,10 @@ const Auth=()=>{
             const response= await axios.post("http://localhost:2500/api/auth/signin",signinData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
             console.log(response.data)
-        } catch (error) {
+        } catch (error:any) {
             dispatch(loginFailure())
+            setError(true)
+            setErrMsg(error.response.data.message)
         }
         
     }
@@ -59,6 +63,7 @@ const Auth=()=>{
             }).catch((err)=>{
                 console.log(err)
                 dispatch(loginFailure())
+                
             })
         })
     }
@@ -71,6 +76,9 @@ const Auth=()=>{
             console.log(response.data)
         } catch (error) {
             dispatch(loginFailure())
+            setError(true)
+            console.log(error)
+            setErrMsg("errr")
         }
         console.log(signupData)
 
@@ -99,6 +107,7 @@ const Auth=()=>{
                             onChange={(e)=>handleSigninChange(e)} 
                             className="input"
                         />
+                        {error&&<span className="err-msg"><i className="ri-error-warning-fill"></i> <p>{" "}{errMsg}</p></span>}
 
                         <button type="submit">Sign in</button>
                         <p>No account yet?<span onClick={()=>setIsSigninForm(false)}> Sign up</span></p>
@@ -134,7 +143,8 @@ const Auth=()=>{
                             onChange={(e)=>handleSignupChange(e)} 
                             value={signupData.password} 
                             className="input"
-                            />
+                        />
+                        {error&&<p>{errMsg}</p>}
 
                         <button type="submit">Sign up</button>
                         <p>Already had an account?<span onClick={()=>setIsSigninForm(true)}> Sign in</span></p>
