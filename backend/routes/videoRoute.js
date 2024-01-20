@@ -25,6 +25,9 @@ router.get("/search", searchForVideo)
 //GET SUBSCRIBED CHANNEL VIDEO
 router.get("/sub",verifyToken, subscribedChannelVideos)
 
+//GET VIDEO WITH TAGS
+router.get("/tags", getVideosWithTags)
+
 //GET VIDEO
 router.get("/:id",getVideo)
 
@@ -35,8 +38,5 @@ router.get("/channel/:id",getChannelVideos)
 router.put("/views/:id",addViews)
 
 
-
-//GET VIDEO WITH TAGS
-router.get("/tags", getVideosWithTags)
 
 export default router

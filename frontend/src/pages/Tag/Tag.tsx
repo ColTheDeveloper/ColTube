@@ -7,9 +7,6 @@ import Spinner from "../../components/Spinner/Spinner"
 import { videoType } from "../../types/pagePropsTypes";
 import { useSearchParams } from "react-router-dom";
 
-// type VideoPropType={
-//     tag:string
-// }
 
 const Tag=()=>{
     const [videos,setVideos]=useState<videoType[] | null>(null)
@@ -19,15 +16,12 @@ const Tag=()=>{
 
     const tag=tagParams.get("tag")
 
-    console.log(tag)
-
     
     useEffect(()=>{
         dispatch(closeNavbar())
         const loadVideo=async()=>{
             setIsLoading(true)
-            const response= await axios.get(`http://localhost:2500/api/videos/${tag}`,{withCredentials:true})
-            console.log(response)
+            const response= await axios.get(`http://localhost:2500/api/videos/tags?tags=${tag}`)
             setIsLoading(false)
             setVideos(response.data)
         }
