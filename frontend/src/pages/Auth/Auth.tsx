@@ -29,6 +29,11 @@ const Auth=()=>{
         if(user) navigate("/")
     },[navigate,user])
 
+    useEffect(()=>{
+        setError(false)
+        setErrMsg("")
+    },[signupData,signinData])
+
     const handleSignupChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
         setSignupData({...signupData,[e.target.name]:e.target.value})
     }
@@ -74,11 +79,10 @@ const Auth=()=>{
             const response= await axios.post("http://localhost:2500/api/auth/signup",signupData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
             console.log(response.data)
-        } catch (error) {
+        } catch (error:any) {
             dispatch(loginFailure())
             setError(true)
-            console.log(error)
-            setErrMsg("errr")
+            setErrMsg(error.response.data.message)
         }
         console.log(signupData)
 

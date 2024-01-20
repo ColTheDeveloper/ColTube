@@ -7,6 +7,9 @@ import jwt from "jsonwebtoken"
 export const signup=async(req,res,next)=>{
     const {name, email , password}=req.body
     try {
+        const foundUser= await userModel.findOne({email:req.body.email})
+        if(foundUser) return next(createError(404, "User already existed!"))
+        
         const salt=bcrypt.genSaltSync(10)
         const hashPassword=bcrypt.hashSync(password,salt)
         const newUser=new userModel({
@@ -30,10 +33,10 @@ export const signin=async(req,res,next)=>{
 
         if(user.fromGoogle) return next(createError(404,"signin with google instead!"))
 
-        console.log(user)
-
-        const isPassword= bcrypt.compare(req.body.password,user.password)
-        console.log(isPassword)
+        const isPassword= await bcrypt.compare(req.body.password,user.password)
+        // console.log(req.body.password)
+        // console.log(user.password)
+        // console.log(isPassword)
         if(!isPassword) return next(createError(400,"Incorrect Password!"))
 
         const  token=jwt.sign({id:user._id},process.env.JWT_TOKEN)
