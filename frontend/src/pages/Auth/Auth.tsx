@@ -68,11 +68,17 @@ const Auth=()=>{
             }).catch((err)=>{
                 console.log(err)
                 dispatch(loginFailure())
+                setError(true)
+                setErrMsg("An error occur try again!")
                 
             })
         })
     }
     const handleSignupSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
+        if(signupData.password.length<=5){
+            setError(true)
+            setErrMsg("Password must be more that 5 words!")
+        }
         e.preventDefault()
         try {
             dispatch(loginStart())
@@ -96,7 +102,7 @@ const Auth=()=>{
                         <p>to continue on ColTube</p>
                         <input 
                             type="text" 
-                            placeholder="name" 
+                            placeholder="email" 
                             name="email" 
                             value={signinData.email} 
                             onChange={(e)=>handleSigninChange(e)} 
@@ -114,7 +120,7 @@ const Auth=()=>{
                         {error&&<span className="err-msg"><i className="ri-error-warning-fill"></i> <p>{" "}{errMsg}</p></span>}
 
                         <button type="submit">Sign in</button>
-                        <p>No account yet?<span onClick={()=>setIsSigninForm(false)}> Sign up</span></p>
+                        <p className="signing-text">No account yet?<span onClick={()=>setIsSigninForm(false)}> Sign up</span></p>
                         <button  onClick={()=>signinWithGoogle()}>Sign in with Google</button>
                     </form>
                 :
@@ -138,7 +144,7 @@ const Auth=()=>{
                             onChange={(e)=>handleSignupChange(e)} 
                             value={signupData.email} 
                             className="input"
-                        />
+                            />
 
                         <input 
                             type="password" 
@@ -147,11 +153,11 @@ const Auth=()=>{
                             onChange={(e)=>handleSignupChange(e)} 
                             value={signupData.password} 
                             className="input"
-                        />
-                        {error&&<p>{errMsg}</p>}
+                            />
+                        {error&&<span className="err-msg"><i className="ri-error-warning-fill"></i> <p>{" "}{errMsg}</p></span>}
 
                         <button type="submit">Sign up</button>
-                        <p>Already had an account?<span onClick={()=>setIsSigninForm(true)}> Sign in</span></p>
+                        <p className="signing-text">Already had an account?<span onClick={()=>setIsSigninForm(true)}> Sign in</span></p>
                         <button  onClick={()=>signinWithGoogle()}>Sign in with Google</button>
                     </form>
                 }
