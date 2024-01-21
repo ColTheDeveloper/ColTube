@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import "./Auth.css"
-import axios from "axios"
+import axios,{AxiosError} from "axios"
 import { loginFailure, loginStart, loginSuccess } from "../../redux/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { auth, provider } from "../../firebase"
 import { signInWithPopup } from "firebase/auth"
 import { RootState } from "../../redux/store"
 import { useNavigate } from "react-router-dom"
+
 
 const Auth=()=>{
     const dispatch=useDispatch()
@@ -49,10 +50,11 @@ const Auth=()=>{
             const response= await axios.post("http://localhost:2500/api/auth/signin",signinData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
             console.log(response.data)
-        } catch (error:any) {
+        } catch (err) {
+            const error = err as AxiosError<Error>;
             dispatch(loginFailure())
             setError(true)
-            setErrMsg(error.response.data.message)
+            setErrMsg(error.response.data.message )
         }
         
     }
@@ -85,7 +87,8 @@ const Auth=()=>{
             const response= await axios.post("http://localhost:2500/api/auth/signup",signupData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
             console.log(response.data)
-        } catch (error:any) {
+        } catch (err) {
+            const error = err as AxiosError<Error>;
             dispatch(loginFailure())
             setError(true)
             setErrMsg(error.response.data.message)
