@@ -20,6 +20,7 @@ const Auth=()=>{
         email:"",
         password:""
     })
+    
     const [signupData,setSignupData]=useState({
         name:"",
         email:"",
