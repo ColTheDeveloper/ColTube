@@ -38,10 +38,6 @@
     display: flex;
 }
 
-.signing-text{
-    
-}
-
 .signing-text>span{
     color: rgb(70, 70, 237);
     cursor: pointer;

@@ -29,13 +29,13 @@ const Home=({type}:VideoPropType)=>{
             }
             if(type==="sub"){
                 setIsLoading(true)
-                const response= await axios.get(`http://localhost:2500/api/videos/${type}`,{withCredentials:true})
+                const response= await axios.get(`${import.meta.env.VITE_API_URL}/videos/${type}`,{withCredentials:true})
                 console.log(response)
                 setIsLoading(false)
                 setVideos(response.data)
             }else{
                 setIsLoading(true)
-                const response= await axios.get(`http://localhost:2500/api/videos/${type}`)
+                const response= await axios.get(`${import.meta.env.VITE_API_URL}/videos/${type}`)
                 console.log(response)
                 setIsLoading(false)
                 setVideos(response.data)

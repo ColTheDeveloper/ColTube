@@ -21,7 +21,7 @@ const Tag=()=>{
         dispatch(closeNavbar())
         const loadVideo=async()=>{
             setIsLoading(true)
-            const response= await axios.get(`http://localhost:2500/api/videos/tags?tags=${tag}`)
+            const response= await axios.get(`${import.meta.env.VITE_API_URL}/videos/tags?tags=${tag}`)
             setIsLoading(false)
             setVideos(response.data)
         }
