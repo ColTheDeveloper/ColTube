@@ -16,7 +16,7 @@ const Card=({video}:videoTypeProp)=>{
 
     useEffect(()=>{
         const fetchCardData=async()=>{
-            const res= await axios.get(`http://localhost:2500/api/users/${video.userId}`)
+            const res= await axios.get(`${import.meta.env.VITE_API_URL}/users/${video.userId}`)
             setChannel(res.data)
         }
         fetchCardData()

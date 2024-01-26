@@ -8,7 +8,6 @@ import { RootState } from "../../redux/store";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import axios from "axios";
 import { openNavbar } from "../../redux/navbarSlide";
-import { Cookies, useCookies } from "react-cookie";
 
 
 const Header=()=>{
@@ -157,7 +156,7 @@ const Header=()=>{
         e.preventDefault()
         console.log(formData)
         try {
-            const res= await axios.post("http://localhost:2500/api/videos",formData,{withCredentials:true})
+            const res= await axios.post(`${import.meta.env.VITE_API_URL}/videos`,formData,{withCredentials:true})
             console.log(res)
             navigate(`/video/${res.data._id}`)
             setShowCreateForm(false)

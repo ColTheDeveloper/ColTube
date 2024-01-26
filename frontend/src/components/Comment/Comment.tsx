@@ -4,14 +4,9 @@ import "./Comment.css"
 import { RootState } from "../../redux/store"
 import CommentCard from "../CommentCard/CommentCard"
 import axios from "axios"
-import { videoIdProps } from "../../types/pagePropsTypes"
+import { commentType, videoIdProps } from "../../types/pagePropsTypes"
 
 
-type commentType={
-    userId:string,
-    videoId:string,
-    desc:string
-}
 
 const Comment=({videoId}:videoIdProps)=>{
     const [comments,setComments]=useState< commentType[] | null>(null)
@@ -67,7 +62,7 @@ const Comment=({videoId}:videoIdProps)=>{
             <div className="Comment-main-container">
                 {comments?.map((comment)=>{
                     return(
-                        <CommentCard  comment={comment} setComments={setComments}/>
+                        <CommentCard  comment={comment} />
                     )
                 })}
             </div>

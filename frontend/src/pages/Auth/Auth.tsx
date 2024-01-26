@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import "./Auth.css"
-import axios,{AxiosError} from "axios"
+import axios from "axios"
+// ,{AxiosError} 
 import { loginFailure, loginStart, loginSuccess } from "../../redux/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { auth, provider } from "../../firebase"
@@ -50,11 +51,11 @@ const Auth=()=>{
             const response= await axios.post(`${import.meta.env.VITE_API_URL}/auth/signin`,signinData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
             console.log(response.data)
-        } catch (err) {
-            const error = err as AxiosError<Error>;
+        } catch (err:any) {
+            //const error = err as AxiosError<Error>;
             dispatch(loginFailure())
             setError(true)
-            setErrMsg(error.response.data.message )
+            setErrMsg(err.response.data.message)
         }
         
     }
@@ -87,11 +88,11 @@ const Auth=()=>{
             const response= await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`,signupData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
             console.log(response.data)
-        } catch (err) {
-            const error = err as AxiosError<Error>;
+        } catch (err:any) {
+            //const error = err as AxiosError<Error>;
             dispatch(loginFailure())
             setError(true)
-            setErrMsg(error.response.data.message)
+            setErrMsg(err.response.data.message)
         }
         console.log(signupData)
 

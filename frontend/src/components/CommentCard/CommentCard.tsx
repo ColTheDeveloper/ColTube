@@ -6,6 +6,7 @@ import { commentProps,  userType } from "../../types/pagePropsTypes";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
+
 const CommentCard=({comment}:commentProps)=>{
     const [commentWriter,setCommentWriter]= useState< userType | null >(null)
     const {user}=useSelector((state:RootState)=>state.user)

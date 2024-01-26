@@ -37,5 +37,4 @@ export type videoIdProps={
 
 export type commentProps={
     comment:commentType,
-    setComments:React.Dispatch<React.SetStateAction<commentType[] | null>>
 }

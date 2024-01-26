@@ -3,15 +3,18 @@ import { useEffect, useState } from "react"
 import { format } from "timeago.js"
 import "./Card2.css"
 import { Link } from "react-router-dom"
+import { userType, videoType } from "../../types/pagePropsTypes"
 
-
-const Card2=({video}:any)=>{
-    const [channel,setChannel]= useState(null)
+type Card2Type={
+    video:videoType
+}
+const Card2=({video}:Card2Type)=>{
+    const [channel,setChannel]= useState<userType | null >(null)
 
     useEffect(()=>{
         const fetchCardData=async()=>{
             try {
-                const res= await axios.get(`http://localhost:2500/api/users/${video.userId}`)
+                const res= await axios.get(`${import.meta.env.VITE_API_URL}/users/${video.userId}`)
                 setChannel(res.data)
                 console.log(res)
             } catch (error) {
