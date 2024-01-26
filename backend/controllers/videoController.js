@@ -33,6 +33,7 @@ export const trendVideos=async(req,res,next)=>{
 
 
 export const getVideosWithTags=async(req,res,next)=>{
+    console.log(req.query.tags)
     const tags= req.query.tags.split(",")
     console.log(tags)
     try {

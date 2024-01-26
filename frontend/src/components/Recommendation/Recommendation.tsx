@@ -3,18 +3,26 @@ import { useEffect, useState } from "react";
 //import Card from "../Card/Card";
 import Card2 from "../Card2/Card2";
 import "./Recommendation.css"
+import { videoType } from "../../types/pagePropsTypes";
 
-
-const Recommendation=({tags})=>{
-    const [videos, setVideos]=useState(null)
+type recommendationProps={
+    tags:string[] | undefined
+}
+const Recommendation=({tags}:recommendationProps)=>{
+    const [videos, setVideos]=useState<videoType[] | null >(null)
 
     useEffect(()=>{
         const fetchVideo=async()=>{
             try {
-                //const res= await axios.get(`${import.meta.env.VITE_API_URL}/videos/tags?tag=${tags}`)
-                const res= await axios.get(`${import.meta.env.VITE_API_URL}/videos/random`)
-                setVideos(res.data)
-                console.log(res)
+                if(tags){
+                    const res= await axios.get(`${import.meta.env.VITE_API_URL}/videos/tags?tags=${tags}`)
+                    setVideos(res.data)
+                    console.log(res)
+                }else{
+                    const res= await axios.get(`${import.meta.env.VITE_API_URL}/videos/random`)
+                    setVideos(res.data)
+                    console.log(res)
+                }
             } catch (error) {
                 console.log(error)
             }

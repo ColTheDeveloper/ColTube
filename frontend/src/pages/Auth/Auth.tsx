@@ -47,7 +47,7 @@ const Auth=()=>{
         e.preventDefault()
         try {
             dispatch(loginStart())
-            const response= await axios.post("http://localhost:2500/api/auth/signin",signinData,{withCredentials:true})
+            const response= await axios.post(`${import.meta.env.VITE_API_URL}/auth/signin`,signinData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
             console.log(response.data)
         } catch (err) {
@@ -61,7 +61,7 @@ const Auth=()=>{
     const signinWithGoogle=async()=>{
         signInWithPopup(auth,provider).then((result)=>{
             console.log(result)
-            axios.post("http://localhost:2500/api/auth/google",{
+            axios.post(`${import.meta.env.VITE_API_URL}/auth/google"`,{
                 name:result.user.displayName,
                 email:result.user.email,
                 img:result.user.photoURL
@@ -84,7 +84,7 @@ const Auth=()=>{
         e.preventDefault()
         try {
             dispatch(loginStart())
-            const response= await axios.post("http://localhost:2500/api/auth/signup",signupData,{withCredentials:true})
+            const response= await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`,signupData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
             console.log(response.data)
         } catch (err) {

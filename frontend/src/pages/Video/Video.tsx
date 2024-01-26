@@ -20,7 +20,6 @@ const Video=()=>{
     const [isLoading,setIsLoading]=useState(true)
     const {currentVideo}= useSelector((state:RootState)=>state.video)
     const {user}=useSelector((state:RootState)=>state.user)
-    console.log(user)
 
     useEffect(()=>{
         const loadPageInfo=async()=>{

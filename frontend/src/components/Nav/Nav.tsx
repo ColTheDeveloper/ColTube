@@ -43,6 +43,8 @@ const Nav=()=>{
                 <NavBtn iconName="ri-music-2-line" navName="Music" isNavLink={false} link="/tags?tag=music" />
                 <NavBtn iconName="ri-trophy-line" navName="Sport" isNavLink={false} link="/tags?tag=sport" />
                 <NavBtn iconName="ri-gamepad-line" navName="Gaming" isNavLink={false} link="/tags?tag=gaming" />
+                <NavBtn iconName="bi bi-film" navName="Anime" isNavLink={false} link="/tags?tag=anime" />
+                
 
                 <hr />
                 <h3>More from ColTube</h3>
