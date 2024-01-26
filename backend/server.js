@@ -28,7 +28,7 @@ mongoose.connect(MONGODB_URI)
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin:["http://localhost:5173","https://coltube.onrender.com"],
+    origin:["http://localhost:5173","https://col-tube.vercel.app"],
     method:["GET","POST","PUT","OPTIONS"],
     credentials:true
 }))
