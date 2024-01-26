@@ -29,7 +29,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
     origin:["http://localhost:5173","https://coltube.onrender.com"],
-    method:["GET","POST","PUT"],
+    method:["GET","POST","PUT","OPTIONS"],
     credentials:true
 }))
 
