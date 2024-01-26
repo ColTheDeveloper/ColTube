@@ -26,8 +26,8 @@ const Video=()=>{
             try {
                 dispatch(fetchVideoStart())
                 setIsLoading(true)
-                const videoRes= await axios.get(`http://localhost:2500/api/videos/${videoId}`)
-                const channelRes= await axios.get(`http://localhost:2500/api/users/${videoRes.data.userId}`)
+                const videoRes= await axios.get(`${import.meta.env.VITE_API_URL}/videos/${videoId}`)
+                const channelRes= await axios.get(`${import.meta.env.VITE_API_URL}/users/${videoRes.data.userId}`)
                 dispatch(fetchVideoSuccess(videoRes.data))
                 setChannelData(channelRes.data)
                 setIsLoading(false)
