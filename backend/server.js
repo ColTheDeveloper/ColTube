@@ -33,7 +33,7 @@ app.use(cors({
     credentials:true
 }))
 
-app.get("/", (res,res)=>{
+app.get("/", (req,res)=>{
     res.send("API is running...")
 })
 app.use("/api/auth",authRoutes )
