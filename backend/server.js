@@ -32,6 +32,10 @@ app.use(cors({
     method:["GET","POST","PUT"],
     credentials:true
 }))
+
+app.get("/", (res,res)=>{
+    res.send("API is running...")
+})
 app.use("/api/auth",authRoutes )
 app.use("/api/users",userRoutes )
 app.use("/api/comments",commentRoutes )
