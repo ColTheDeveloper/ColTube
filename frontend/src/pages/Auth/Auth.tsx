@@ -60,7 +60,6 @@ const Auth=()=>{
     }
     const signinWithGoogle=async()=>{
         signInWithPopup(auth,provider).then((result)=>{
-            console.log(result)
             axios.post(`${import.meta.env.VITE_API_URL}/auth/google`,{
                 name:result.user.displayName,
                 email:result.user.email,
@@ -123,7 +122,7 @@ const Auth=()=>{
 
                         <button type="submit">Sign in</button>
                         <p className="signing-text">No account yet?<span onClick={()=>setIsSigninForm(false)}> Sign up</span></p>
-                        <button  onClick={()=>signinWithGoogle()}>Sign in with Google</button>
+                        <p className="btn"  onClick={()=>signinWithGoogle()}>Sign in with Google</p>
                     </form>
                 :
                 
@@ -160,7 +159,7 @@ const Auth=()=>{
 
                         <button type="submit">Sign up</button>
                         <p className="signing-text">Already had an account?<span onClick={()=>setIsSigninForm(true)}> Sign in</span></p>
-                        <button  onClick={()=>signinWithGoogle()}>Sign in with Google</button>
+                        <p className="btn"  onClick={()=>signinWithGoogle()}>Sign in with Google</p>
                     </form>
                 }
             </div>
