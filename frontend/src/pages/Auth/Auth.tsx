@@ -50,7 +50,6 @@ const Auth=()=>{
             dispatch(loginStart())
             const response= await axios.post(`${import.meta.env.VITE_API_URL}/auth/signin`,signinData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
-            console.log(response.data)
         } catch (err:any) {
             //const error = err as AxiosError<Error>;
             dispatch(loginFailure())
@@ -87,7 +86,6 @@ const Auth=()=>{
             dispatch(loginStart())
             const response= await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`,signupData,{withCredentials:true})
             dispatch(loginSuccess(response.data))
-            console.log(response.data)
         } catch (err:any) {
             //const error = err as AxiosError<Error>;
             dispatch(loginFailure())

@@ -27,6 +27,7 @@ export const signup=async(req,res,next)=>{
             httpOnly:false,
             sameSite:"None",
             secure:true,
+            maxAge:7*24*60*60*1000
         }).status(200).json(others)
 
     } catch (err) {
@@ -56,6 +57,7 @@ export const signin=async(req,res,next)=>{
             httpOnly:false,
             sameSite:"None",
             secure:true,
+            maxAge:7*24*60*60*1000
         }).status(200).json(others)
 
     } catch (err) {
@@ -72,7 +74,8 @@ export const signinWithGoogle= async(req,res,next)=>{
             res.cookie("access_token",token,{
                 httpOnly:false,
                 sameSite:"None",
-                secure:false
+                secure:false,
+                maxAge:7*24*60*60*1000
             }).status(200).json(user)
         }else{
             const newUser= await userModel({
@@ -85,6 +88,7 @@ export const signinWithGoogle= async(req,res,next)=>{
                 httpOnly:false,
                 sameSite:"None",
                 secure:true,
+                maxAge: 7*24*60*60*1000
             }).status(200).json(user)
         }
     } catch (err) {

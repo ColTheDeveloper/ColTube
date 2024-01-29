@@ -4,6 +4,7 @@ import { userType } from "../types/pagePropsTypes"
 type userSliceType={
     user: null | userType,
     loading:boolean,
+    logOutDate: null | string
     error:boolean
 }
 
@@ -11,6 +12,7 @@ type userSliceType={
 const initialState:userSliceType={
     user:null,
     loading:false,
+    logOutDate:null,
     error:false
 }
 
@@ -22,7 +24,11 @@ export const userSlice=createSlice({
             state.loading=false
         },
         loginSuccess:(state,action)=>{
+            const currentDate = new Date();
+            const futureDate = new Date(currentDate);
+            futureDate.setDate(currentDate.getDate() + 5)
             state.user=action.payload
+            state.logOutDate=futureDate.toString()
             state.loading=false
         },
         loginFailure:(state)=>{
