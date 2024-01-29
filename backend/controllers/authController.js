@@ -65,7 +65,7 @@ export const signin=async(req,res,next)=>{
 
 export const signinWithGoogle= async(req,res,next)=>{
     try {
-        const user= await userModel.findOne({name:req.body.name})
+        const user= await userModel.findOne({email:req.body.email})
         
         if(user){
             const  token=jwt.sign({id:user._id},process.env.JWT_TOKEN)

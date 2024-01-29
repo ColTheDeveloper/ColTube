@@ -62,7 +62,7 @@ const Auth=()=>{
     const signinWithGoogle=async()=>{
         signInWithPopup(auth,provider).then((result)=>{
             console.log(result)
-            axios.post(`${import.meta.env.VITE_API_URL}/auth/google"`,{
+            axios.post(`${import.meta.env.VITE_API_URL}/auth/google`,{
                 name:result.user.displayName,
                 email:result.user.email,
                 img:result.user.photoURL
