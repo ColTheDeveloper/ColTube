@@ -33,9 +33,7 @@ export const trendVideos=async(req,res,next)=>{
 
 
 export const getVideosWithTags=async(req,res,next)=>{
-    console.log(req.query.tags)
     const tags= req.query.tags.split(",")
-    console.log(tags)
     try {
         const videos= await videoModel.find({tags: {$in:tags}}).limit(20)
         res.status(200).json(videos)
