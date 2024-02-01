@@ -17,11 +17,10 @@ const Recommendation=({tags}:recommendationProps)=>{
                 if(tags){
                     const res= await axios.get(`${import.meta.env.VITE_API_URL}/videos/tags?tags=${tags}`)
                     setVideos(res.data)
-                    console.log(res)
                 }else{
                     const res= await axios.get(`${import.meta.env.VITE_API_URL}/videos/random`)
                     setVideos(res.data)
-                    console.log(res)
+                    
                 }
             } catch (error) {
                 console.log(error)

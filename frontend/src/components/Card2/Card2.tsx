@@ -16,7 +16,6 @@ const Card2=({video}:Card2Type)=>{
             try {
                 const res= await axios.get(`${import.meta.env.VITE_API_URL}/users/${video.userId}`)
                 setChannel(res.data)
-                console.log(res)
             } catch (error) {
                 console.log(error)
             }

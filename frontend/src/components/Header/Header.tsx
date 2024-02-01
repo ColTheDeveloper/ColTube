@@ -154,10 +154,8 @@ const Header=()=>{
 
     const handleSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        console.log(formData)
         try {
             const res= await axios.post(`${import.meta.env.VITE_API_URL}/videos`,formData,{withCredentials:true})
-            console.log(res)
             navigate(`/video/${res.data._id}`)
             setShowCreateForm(false)
         } catch (error) {

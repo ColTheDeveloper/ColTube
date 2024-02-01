@@ -91,7 +91,6 @@ const Auth=()=>{
             setError(true)
             setErrMsg(err.response.data.message)
         }
-        console.log(signupData)
 
     }
     return(

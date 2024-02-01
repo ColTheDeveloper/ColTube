@@ -14,12 +14,10 @@ const Comment=({videoId}:videoIdProps)=>{
     const [commentForm,setCommentForm]=useState("")
     const [isLoading,setIsLoading]=useState(false)
 
-    console.log(user)
     useEffect(()=>{
         const fetchComment=async()=>{
             try {
                 const res= await axios.get(`${import.meta.env.VITE_API_URL}/comments/${videoId}`)
-                console.log(res)
                 setComments(res.data)
             } catch (error) {
                 console.log(error)

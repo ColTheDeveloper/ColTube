@@ -41,10 +41,10 @@ const Video=()=>{
     },[videoId,dispatch])
     
     const addViews=async()=>{
-        console.log("clicked")
         try {
             await axios.put(`${import.meta.env.VITE_API_URL}/videos/views/${currentVideo?._id}`)
         } catch (error) {
+            
             console.log(error)    
         }
     }

@@ -16,7 +16,6 @@ const Search=()=>{
         const loadSearch=async()=>{
             setIsLoading(true)
             const response= await axios.get(`${import.meta.env.VITE_API_URL}/videos/search?q=${search}`)
-            console.log(response)
             setIsLoading(false)
             setVideos(response.data)
         }
