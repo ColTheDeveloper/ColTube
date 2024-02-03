@@ -49,7 +49,6 @@ const Video=()=>{
         }
     }
 
-    
     const handleLikes=async()=>{
         await axios.put(`${import.meta.env.VITE_API_URL}/users/like/${currentVideo?._id}`,{},{withCredentials:true})
         dispatch(likeVideo(currentVideo?._id))
