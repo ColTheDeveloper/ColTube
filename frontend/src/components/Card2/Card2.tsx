@@ -30,7 +30,7 @@ const Card2=({video}:Card2Type)=>{
                     <img src={video.imgUrl} alt="video" />    
                 </div>
                 <div>
-                    <p>{video.title}</p>
+                    <h3>{video.title}</h3>
                     <p>{channel?.name}</p>
                     <p>{video?.views} views • {format(video.createdAt)}</p>
                 </div>

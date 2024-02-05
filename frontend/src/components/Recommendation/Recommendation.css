@@ -6,6 +6,7 @@
 }
 @media (max-width:800px) {
     .Recommendation{
+        margin-top: 1rem;
         width: 100%;
     }
 }

@@ -60,7 +60,7 @@ const Comment=({videoId}:videoIdProps)=>{
             <div className="Comment-main-container">
                 {comments?.map((comment)=>{
                     return(
-                        <CommentCard  comment={comment} />
+                        <CommentCard key={comment._id}  comment={comment} />
                     )
                 })}
             </div>

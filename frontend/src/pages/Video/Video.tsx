@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { dislikeVideo, fetchVideoFailure, fetchVideoStart, fetchVideoSuccess, likeVideo } from "../../redux/videoSlice";
 import { RootState } from "../../redux/store";
 import "./Video.css"
@@ -15,6 +15,7 @@ import Spinner from "../../components/Spinner/Spinner";
 const Video=()=>{
     const {videoId}= useParams()
     const dispatch=useDispatch()
+    const navigate=useNavigate()
     //const [videoData, setVideoData]=useState({})
     const [channelData,setChannelData]=useState<userType | null>(null)
     const [isLoading,setIsLoading]=useState(true)
@@ -59,6 +60,14 @@ const Video=()=>{
         await axios.put(`${import.meta.env.VITE_API_URL}/users/dislike/${currentVideo?._id}`,{},{withCredentials:true})
         dispatch(dislikeVideo(currentVideo?._id))
     }
+
+    const handleDelete=async()=>{
+        await axios.delete(`${import.meta.env.VITE_API_URL}/videos/${currentVideo?._id}`,{withCredentials:true})
+        navigate("/")
+        
+
+    }
+    console.log(user?._id,currentVideo?.userId)
 
     const handleSubscription=async()=>{
         if(user?.subscribedUsers.includes(channelData?._id as string)){
@@ -121,6 +130,14 @@ const Video=()=>{
                                     <i className="ri-share-forward-line"></i>
                                     <p>share</p>
                                 </div>
+                                {user?._id===currentVideo?.userId?
+                                    <div onClick={()=>handleDelete()} className="video-share-btn">
+                                        <i className="ri-share-forward-line"></i>
+                                        <p>delete</p>
+                                    </div>
+                                :
+                                    ""
+                                }
                             </div>
                         </div>
                         <div>

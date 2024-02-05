@@ -14,14 +14,15 @@
     display: flex;
     flex-direction: column;
     width: 55%;
-    gap: .4rem;
+    gap: .2rem;
 }
-.Card2>div:nth-of-type(2)>h2{
-    font-weight: bolder;
+.Card2>div:nth-of-type(2)>h3{
+    font-size: 13px;
 }
-.Card2>div:nth-of-type(2)>p:nth-of-type(2),
-.Card2>div:nth-of-type(2)>p:nth-of-type(3){
+.Card2>div:nth-of-type(2)>p:nth-of-type(1),
+.Card2>div:nth-of-type(2)>p:nth-of-type(2){
     color: #aaaaaa;
+    font-size: 12px;
 }
 @media (max-width:800px) {
     

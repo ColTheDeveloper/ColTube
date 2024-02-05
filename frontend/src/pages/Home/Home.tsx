@@ -56,7 +56,7 @@ const Home=({type}:VideoPropType)=>{
                     <div className="Card-container">
                         {videos?.map((video)=>{
                             return(
-                                <Card video={video} />
+                                <Card key={video._id} video={video} />
                             )
                         })} 
                     </div>

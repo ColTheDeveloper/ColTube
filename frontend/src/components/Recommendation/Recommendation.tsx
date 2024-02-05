@@ -32,7 +32,7 @@ const Recommendation=({tags}:recommendationProps)=>{
         <div className="Recommendation">
             {videos?.map((video)=>{
                 return(
-                    <Card2 video={video} />
+                    <Card2 key={video._id} video={video} />
                 )
             })}
 

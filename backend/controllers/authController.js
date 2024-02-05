@@ -5,13 +5,13 @@ import jwt from "jsonwebtoken"
 
 
 export const signup=async(req,res,next)=>{
-    const {name, email , password}=req.body
+    const {name, email }=req.body
     try {
         const foundUser= await userModel.findOne({email:req.body.email})
         if(foundUser) return next(createError(404, "User already existed!"))
         
         const salt=bcrypt.genSaltSync(10)
-        const hashPassword=bcrypt.hashSync(password,salt)
+        const hashPassword=bcrypt.hashSync(req.body.password,salt)
         const newUser=new userModel({
             name,
             email,

@@ -156,6 +156,15 @@ const Header=()=>{
         e.preventDefault()
         try {
             const res= await axios.post(`${import.meta.env.VITE_API_URL}/videos`,formData,{withCredentials:true})
+            setFormData({
+                title:"",
+                desc:"",
+                imgUrl:"",
+                videoUrl:"",
+                tags:[]
+            })
+            setVideoPercent(0)
+            setImgPercent(0)
             navigate(`/video/${res.data._id}`)
             setShowCreateForm(false)
         } catch (error) {
@@ -256,12 +265,14 @@ const Header=()=>{
                                     <input 
                                         type="text" 
                                         placeholder="Title" 
+                                        disabled={uploading}
                                         className="input"
                                         name='title'
                                         onChange={e=>handleChange(e)}
                                         />
                                     <textarea  
                                         placeholder="Description" 
+                                        disabled={uploading}
                                         className="input"
                                         name="desc"
                                         onChange={e=>handleChange(e)}
@@ -269,6 +280,7 @@ const Header=()=>{
                                     <input 
                                         type="text" 
                                         placeholder="Seperate the tag with comma" 
+                                        disabled={uploading}
                                         className="input"
                                         onChange={e=>handleTagsChange(e)}
                                     />
@@ -292,7 +304,7 @@ const Header=()=>{
                                                 />
                                         }
                                     </div>
-                                    <button type="submit">Create Video</button>
+                                    <button disabled={uploading} type="submit">Create Video</button>
                                 </form>
 
                             </div>

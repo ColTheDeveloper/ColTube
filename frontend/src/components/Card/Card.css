@@ -8,9 +8,7 @@
     /* border:1px solid red; */
 }
 
-.Card-wrapper{
-    width: 100%;
-}
+
 
 .Card>img{
     width: 100%;
@@ -48,6 +46,9 @@
     .Card{
         max-width: 100%;
         /* width: 20rem; */
+    }
+    .Card-wrapper{
+        width: 100%;
     }
     .Card>img{
         border-radius: 0;
