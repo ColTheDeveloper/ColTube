@@ -41,7 +41,7 @@ const Card=({video}:videoTypeProp)=>{
 
     
     return(
-        <Link to={`/video/${video._id}`}>
+        <Link className="Card-wrapper" to={`/video/${video._id}`}>
             <div className="Card">
                 <img src={imageSrc} alt={video.title} />
                 <div className="Card-details">
