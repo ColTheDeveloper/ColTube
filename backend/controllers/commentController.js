@@ -20,7 +20,7 @@ export const addComment=async(req,res,next)=>{
 
 export const getComment=async(req,res,next)=>{
     try {
-        const comments= await commentModel.find({videoId:req.params.videoId})
+        const comments= await commentModel.find({videoId:req.params.videoId}).sort({createdAt:-1})
         res.status(200).json(comments)        
     } catch (err) {
         next(err)
