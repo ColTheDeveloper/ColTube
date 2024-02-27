@@ -1,0 +1,24 @@
+.Signin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.Signin>div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid white;
+    border-radius: 50px;
+    padding: 10px;
+    cursor: pointer;
+}
+.Signin>div>h2{
+    margin: 0;
+    font-size: 15px;
+}
+.Signin>div>img{
+    width: 23px;
+    height: 23px;
+}

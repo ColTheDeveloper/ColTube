@@ -2,7 +2,7 @@
 //import './App.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Layout from './components/Layout/Layout'
-import Auth from './pages/Auth/Auth'
+//import Auth from './pages/Auth/Auth'
 import Video from './pages/Video/Video'
 import Home from './pages/Home/Home'
 import Search from "./pages/Search/Search"
@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout } from './redux/userSlice'
 import Tag from './pages/Tag/Tag'
 import { RootState } from './redux/store'
+import Signin from './pages/Signin/Signin'
 
 const router=createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const router=createBrowserRouter([
       },
       {
         path:"/auth",
-        element:<Auth />
+        element:<Signin />
       },
       {
         path:"/tags",
