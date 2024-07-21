@@ -2,10 +2,11 @@
   "name": "coltube-backend",
   "version": "0.0.1",
   "description": "A youtube clone",
-  "main": "server.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server.js"
+    "start":"node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "colTheDeveloper",
   "license": "ISC",
